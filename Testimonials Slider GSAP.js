@@ -1,4 +1,4 @@
-// GSAP Transition Function
+// GSAP Slider for testimonies (not used)
 function slideTo(newIndex, direction) {
   const slides = document.querySelectorAll('.testimonies-slide');
   const currentSlide = document.querySelector('.testimonies-slide.current');
