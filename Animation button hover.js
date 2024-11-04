@@ -1,4 +1,4 @@
-// Check if GSAP and ScrollTrigger are available
+// Check GSAP and ScrollTrigger
 if (typeof gsap !== 'undefined') {
   document.querySelectorAll('.button').forEach(button => {
     const hoverElement = button.querySelector('.hover_animation');
