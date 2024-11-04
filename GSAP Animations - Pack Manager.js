@@ -19,20 +19,19 @@ gsap.from('[animate] .word', {
 })
 
 // Curseur
-// Register GSAP and ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 // Select cursor and section
 const cursor = document.querySelector('.custom-cursor');
 const section = document.querySelector('.section_pm-chiffres');
 
-// Define initial styles for cursor
+// initial styles for cursor
 gsap.set(cursor, { scale: 0, opacity: 0 });
 
-// Function to update cursor position with latency
+// update cursor position
 function updateCursor(e) {
   gsap.to(cursor, {
-    duration: 0.4, // Adjusts the delay effect
+    duration: 0.4, // latency effect
     x: e.clientX,
     y: e.clientY,
     ease: "power3.out"
@@ -62,7 +61,7 @@ section.addEventListener('mouseleave', () => {
 });
 
 //Animation chiffres DONE
-// Register the ScrollTrigger plugin with GSAP
+// ScrollTrigger plugin with GSAP
 gsap.registerPlugin(ScrollTrigger);
 
 // Target the text and its wrapper
@@ -143,14 +142,14 @@ gsap.to(animatedTextData, {
   ease: 'none', // No easing for a linear scroll effect
   scrollTrigger: {
     trigger: '.animated-bg-text_wrapper-data', // Section that triggers the scroll animation
-    start: 'bottom bottom', // Start when the top of the section reaches 75% viewport height
-    end: 'top top', // End when the bottom of the section reaches 25% viewport height
-    scrub: true, // Sync the animation to the scroll position
-    markers: true // Optional: add markers for debugging
+    start: 'bottom bottom',
+    end: 'top top',
+    scrub: true,
+    markers: false,
   }
 });
 
-//Rotation de la CRM
+//Rotation de la capsule CRM
 gsap.registerPlugin(ScrollTrigger);
 
 gsap.to('.capsule-crm-tool', {
