@@ -467,7 +467,6 @@ gsap.to(".home-cards_card-item.purple", {
 });
 
 //Tab change
-//Tab change
 // Register GSAP
 gsap.registerPlugin(ScrollTrigger);
 
