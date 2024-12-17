@@ -1,27 +1,74 @@
-// Animation image header DONE
+//header image animation
+// Vérifie si l'écran est supérieur à 992px
+if (window.innerWidth > 992) {
+  // Register GSAP and ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger);
 
-// Calcul de la position à laquelle l'animation doit commencer
-const triggerPosition = window.innerHeight * 0.5; // 50% de la hauteur de l'écran
+  // Animation pour .home-header_header_image
+  gsap.to('.home-header_header_image', {
+    rotationX: 0, // Rotation sur l'axe X
+    ease: 'none', // Mouvement linéaire
+    scrollTrigger: {
+      trigger: '.home-header_image-wrapper', // Élément déclencheur
+      start: 'center bottom', // Début quand le centre du déclencheur atteint le bas
+      end: 'top top', // Fin quand le haut du déclencheur atteint le haut
+      scrub: true, // Synchronisation avec le scroll
+      markers: false // Marqueurs pour debug (désactivez en production)
+    }
+  });
 
-// Animation GSAP
-gsap.to('.home-header_header_image', {
-  rotationX: 0, // Rotation initiale à 0 degrés
-  scrollTrigger: {
-    trigger: '.home-header_image-wrapper', // Élément déclencheur
-    start: 'top center', // Début de l'animation lorsque le déclencheur atteint le centre de l'écran
-    end: 'top top', // Fin de l'animation lorsque le déclencheur atteint le haut de l'écran
-    scrub: true, // Permet une animation fluide pendant le scroll
-    onUpdate: self => {
-      const progress = self.progress; // Récupérer la progression du scroll
-      const rotationValue = gsap.utils.mapRange(0, 1, 0, 30,
-        progress); // Mapper la progression du scroll à la valeur de rotation
-      gsap.set(
-        '.home-header_header_image', { rotationX: rotationValue }
-      ); // Mettre à jour la rotation de l'élément
-    },
-    markers: false // Affiche des marqueurs pour visualiser les déclencheurs
-  }
-});
+  // Animation pour .home-header_contact-image
+  gsap.to('.home-header_contact-image', {
+    rotationX: 0,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.home-header_image-wrapper',
+      start: 'center bottom',
+      end: 'top top',
+      scrub: true,
+      markers: false
+    }
+  });
+
+  // Animation pour .home-header_image-news
+  gsap.to('.home-header_image-news', {
+    rotationX: 0,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.home-header_image-wrapper',
+      start: 'center bottom',
+      end: 'top top',
+      scrub: true,
+      markers: false
+    }
+  });
+
+  // Animation pour .home-header_score-image
+  gsap.to('.home-header_score-image', {
+    rotationX: 0,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.home-header_image-wrapper',
+      start: 'center bottom',
+      end: 'top top',
+      scrub: true,
+      markers: false
+    }
+  });
+
+  // Animation pour .home-header_add-contact
+  gsap.to('.home-header_add-contact', {
+    rotationX: 0,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.home-header_image-wrapper',
+      start: 'center bottom',
+      end: 'top top',
+      scrub: true,
+      markers: false
+    }
+  });
+}
 
 // Animation chiffre DONE
 // Register GSAP and ScrollTrigger
@@ -38,7 +85,7 @@ const scrollTriggerConfig = {
   start: "25% bottom", // Start when 25% of the section reaches the bottom of the viewport
   end: "top 25%", // End when the top of the section reaches 25% from the top of the viewport
   scrub: true, // Syncs animations with scroll
-  markers: true, // Optional: set to true for debugging
+  markers: false, // Optional: set to true for debugging
 };
 
 gsap.to(".number_animation-1", {
@@ -219,47 +266,51 @@ if (window.matchMedia("(min-width: 992px)").matches) {
 }
 
 // Curseur
+// Curseur
 // Register GSAP and ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
-// Select cursor and section
-const cursor = document.querySelector('.custom-cursor');
-const section = document.querySelector('.section_home-chiffres');
+// Vérifie si l'écran est supérieur à 992px
+if (window.innerWidth > 992) {
+  // Sélection du curseur et de la section
+  const cursor = document.querySelector('.custom-cursor');
+  const section = document.querySelector('.section_home-chiffres');
 
-// Define initial styles for cursor
-gsap.set(cursor, { scale: 0, opacity: 0 });
+  // Définit les styles initiaux pour le curseur
+  gsap.set(cursor, { scale: 0, opacity: 0 });
 
-// Function to update cursor position with latency
-function updateCursor(e) {
-  gsap.to(cursor, {
-    duration: 0.4, // Adjusts the delay effect
-    x: e.clientX,
-    y: e.clientY,
-    ease: "power3.out"
+  // Fonction pour mettre à jour la position du curseur avec latence
+  function updateCursor(e) {
+    gsap.to(cursor, {
+      duration: 0.4, // Ajuste l'effet de délai
+      x: e.clientX,
+      y: e.clientY,
+      ease: "cubic-bezier(0.64, 0, 0.25, 1)"
+    });
+  }
+
+  // Affiche le curseur avec une animation de scale et d'opacité au survol de la section
+  section.addEventListener('mouseenter', () => {
+    gsap.to(cursor, {
+      scale: 1,
+      opacity: 1,
+      duration: 0.360,
+      ease: "cubic-bezier(0.64, 0, 0.25, 1)"
+    });
+    document.addEventListener('mousemove', updateCursor);
+  });
+
+  // Cache le curseur avec une animation de scale et d'opacité à la sortie de la section
+  section.addEventListener('mouseleave', () => {
+    gsap.to(cursor, {
+      scale: 0,
+      opacity: 0,
+      duration: 0.360,
+      ease: "cubic-bezier(0.64, 0, 0.25, 1)"
+    });
+    document.removeEventListener('mousemove', updateCursor);
   });
 }
-
-// Show cursor with scale and opacity animation on section hover
-section.addEventListener('mouseenter', () => {
-  gsap.to(cursor, {
-    scale: 1,
-    opacity: 1,
-    duration: 0.3,
-    ease: "power3.out"
-  });
-  document.addEventListener('mousemove', updateCursor);
-});
-
-// Hide cursor with scale and opacity animation on section leave
-section.addEventListener('mouseleave', () => {
-  gsap.to(cursor, {
-    scale: 0,
-    opacity: 0,
-    duration: 0.3,
-    ease: "power3.out"
-  });
-  document.removeEventListener('mousemove', updateCursor);
-});
 
 //Animation chiffres DONE
 // Register the ScrollTrigger plugin with GSAP
@@ -278,8 +329,8 @@ gsap.to(animatedTextData, {
   ease: 'none', // No easing for a linear scroll effect
   scrollTrigger: {
     trigger: '.home-chiffres_wrapper', // Section that triggers the scroll animation
-    start: 'bottom bottom', // Start when the top of the section reaches 75% viewport height
-    end: 'top 25%', // End when the bottom of the section reaches 25% viewport height
+    start: 'top bottom',
+    end: 'bottom top',
     scrub: true, // Sync the animation to the scroll position
     markers: false // Optional: add markers for debugging
   }
@@ -306,27 +357,33 @@ gsap.to('.home-cta-data_image', {
 gsap.registerPlugin(ScrollTrigger);
 
 gsap.to('.capsule_wrapper_home-chiffres', {
-  rotation: 2, // L'élément tourne jusqu'à 2 degrés
+  rotation: 10, // L'élément tourne jusqu'à 2 degrés
   ease: 'none',
   scrollTrigger: {
     trigger: '.section_home-chiffres', // Déclencheur : la section
     start: 'top bottom', // Démarre quand la section entre dans le viewport
     end: 'bottom top', // Se termine quand la section sort du viewport
     scrub: true, // L'animation suit le scroll
+    markers: false,
     onUpdate: (self) => {
-      gsap.set('.capsule_wrapper_home-chiffres', { rotation: -2 + 4 * self.progress });
+      gsap.set('.capsule_wrapper_home-chiffres', { rotation: -4 + 10 * self.progress });
     },
   },
 });
 
 // GSAP Slider
+// GSAP Slider with Click Lock Mechanism
+let isAnimating = false; // Variable to lock clicks during animation
+
 function slideTo(newIndex, direction) {
   const slides = document.querySelectorAll('.testimonies-slide');
   const currentSlide = document.querySelector('.testimonies-slide.current');
   const nextSlide = slides[newIndex];
 
+  if (isAnimating) return; // Prevent further clicks if an animation is in progress
+
   try {
-    if (currentSlide) {
+    if (currentSlide && nextSlide) {
       let xValue = '35%';
       let rotationValue = 15;
 
@@ -335,7 +392,9 @@ function slideTo(newIndex, direction) {
         rotationValue = -15;
       }
 
-      // Animate current slide with a duration of 0.5s
+      isAnimating = true; // Lock clicks during animation
+
+      // Animate current slide
       gsap.to(currentSlide, {
         opacity: 0,
         x: xValue,
@@ -348,7 +407,7 @@ function slideTo(newIndex, direction) {
         },
       });
 
-      // Immediately start animation for the next slide with a duration of 0.8s
+      // Animate next slide
       nextSlide.classList.add('current');
       nextSlide.style.zIndex = 1;
       gsap.fromTo(nextSlide, { opacity: 0, x: '0', rotationZ: 8 },
@@ -356,37 +415,46 @@ function slideTo(newIndex, direction) {
         opacity: 1,
         x: '0%',
         rotationZ: 0,
-        duration: 0.8 // Different duration for nextSlide animation
+        duration: 0.8,
+        onComplete: () => {
+          isAnimating = false; // Unlock clicks after animation completes
+        },
       });
     } else {
       console.log(
         'Current slide not found. Make sure there is a slide with class "current" in the HTML.'
       );
+      isAnimating = false; // Unlock if something goes wrong
     }
   } catch (error) {
     console.error('Error in slideTo function:', error);
+    isAnimating = false; // Ensure unlocking in case of errors
   }
 }
 
 // Index tracking
 let currentIndex = 0;
 const slides = document.querySelectorAll('.testimonies-slide');
-const slidesArray = Array.from(slides); // Convert NodeList to Array
+const slidesArray = Array.from(slides);
 
 // Add .current class to the first slide element
 slides[0].classList.add('current');
 
 // Navigation Buttons
 document.querySelector('.arrow_slider-testimonies-next').addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % slidesArray.length;
-  console.log('Next button clicked. New index:', currentIndex);
-  slideTo(currentIndex, 'next');
+  if (!isAnimating) {
+    currentIndex = (currentIndex + 1) % slidesArray.length;
+    console.log('Next button clicked. New index:', currentIndex);
+    slideTo(currentIndex, 'next');
+  }
 });
 
 document.querySelector('.arrow_slider-testimonies-prev').addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + slidesArray.length) % slidesArray.length;
-  console.log('Previous button clicked. New index:', currentIndex);
-  slideTo(currentIndex, 'prev');
+  if (!isAnimating) {
+    currentIndex = (currentIndex - 1 + slidesArray.length) % slidesArray.length;
+    console.log('Previous button clicked. New index:', currentIndex);
+    slideTo(currentIndex, 'prev');
+  }
 });
 
 //Test animation logo
@@ -403,8 +471,8 @@ ScrollTrigger.matchMedia({
       ease: 'none',
       scrollTrigger: {
         trigger: '.section_home-logo',
-        start: 'top 75%',
-        end: 'top 10%',
+        start: 'top bottom',
+        end: 'top top',
         scrub: true,
         markers: false, // Optionnel pour le débogage
       }
@@ -412,59 +480,47 @@ ScrollTrigger.matchMedia({
   }
 });
 
-//Stacking card
-// Register ScrollTrigger with GSAP
-gsap.registerPlugin(ScrollTrigger);
+// Sélectionner les cartes et l'élément donnees-cards_left-content
+const cards = document.querySelectorAll('.home-cards_card-item');
+const leftContent = document.querySelector('.home-cards_left-content');
+const nbCards = cards.length; // Nombre total de cartes
 
-// Set initial position for each card without using CSS
-gsap.set(".home-cards_card-item.orange", {
-  position: "absolute",
-  left: "0%",
-  right: "0%",
-  top: "200%",
-  bottom: "auto"
-});
+// Fonction pour appliquer les styles dynamiques
+function applyStickyStyles(baseTop, incrementTop, incrementMargin) {
+  cards.forEach((card, index) => {
+    const topValue = baseTop + index * incrementTop; // Calcul de `top`
+    const marginValue = incrementMargin * (nbCards - index - 1); // Calcul de `margin-bottom`
 
-gsap.set(".home-cards_card-item.purple", {
-  position: "absolute",
-  left: "0%",
-  right: "0%",
-  top: "400%",
-  bottom: "auto"
-});
+    // Applique les styles dynamiques aux cartes
+    gsap.set(card, {
+      position: 'sticky', // Assure que chaque carte est sticky
+      top: `${topValue}rem`, // Décalage sticky croissant
+      marginBottom: `${marginValue}rem`, // Espacement décroissant
+    });
 
-// Pin the section independently with pinSpacing enabled
-ScrollTrigger.create({
-  trigger: ".section_home-cards",
-  start: "top top",
-  end: "+=150%", // Duration to allow scrolling animations
-  pin: true,
-  pinSpacing: true // Keeps spacing after pinning ends to prevent overlap
-});
+    // Applique le margin-bottom de la première carte à donnees-cards_left-content
+    if (index === 0) {
+      gsap.set(leftContent, { marginBottom: `${marginValue}rem` });
+    }
+  });
+}
 
-// Animate the orange card into view
-gsap.to(".home-cards_card-item.orange", {
-  top: "22%", // Target position
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".section_home-cards",
-    start: "top top",
-    end: "bottom center", // Adjust end position as needed
-    scrub: true,
+// Appliquer les styles dynamiquement selon la taille d'écran
+function updateStyles() {
+  if (window.matchMedia('(max-width: 767px)').matches) {
+    // Pour les écrans ≤ 767px
+    applyStickyStyles(10, 3, 3);
+  } else {
+    // Pour les écrans > 767px
+    applyStickyStyles(15, 5, 5);
   }
-});
+}
 
-// Animate the purple card into view
-gsap.to(".home-cards_card-item.purple", {
-  top: "44%", // Target position
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".section_home-cards",
-    start: "top top",
-    end: "bottom top", // Adjust end position for desired animation
-    scrub: true,
-  }
-});
+// Exécute la fonction au chargement
+updateStyles();
+
+// Réécoute les changements de taille d'écran
+window.addEventListener('resize', updateStyles);
 
 //Tab change
 // Register GSAP
