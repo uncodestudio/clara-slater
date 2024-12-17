@@ -1,3 +1,29 @@
+// Logo animation - mobile
+// Register the ScrollTrigger plugin with GSAP
+gsap.registerPlugin(ScrollTrigger);
+
+// Target the animated element and its wrapper
+const logoList = document.querySelector('.pm_logo-list'); // Élément à animer
+const logoWrapper = document.querySelector('.pm_logo-wrapper'); // Wrapper de l'élément
+
+// Calculate the animation distance based on wrapper width and logo list offset
+const distanceLogo = logoWrapper.clientWidth - logoList.offsetWidth;
+
+// Create the animation for screens < 767px
+if (window.innerWidth < 767) {
+  gsap.to(logoList, {
+    x: distanceLogo, // Déplacement horizontal de droite à gauche
+    ease: 'none', // Animation linéaire
+    scrollTrigger: {
+      trigger: '.pm-logo_content', // Section qui déclenche l'animation
+      start: 'top bottom', // Début de l'animation
+      end: 'top top', // Fin de l'animation
+      scrub: true, // Synchronise l'animation avec le scroll
+      markers: false, // Facultatif : Activez pour debug
+    },
+  });
+}
+
 //Texte animé DONE
 let typeSplit = new SplitType('[animate]', {
   types: 'lines, words, chars',
@@ -19,46 +45,50 @@ gsap.from('[animate] .word', {
 })
 
 // Curseur
+// Register GSAP and ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
-// Select cursor and section
-const cursor = document.querySelector('.custom-cursor');
-const section = document.querySelector('.section_pm-chiffres');
+// Vérifie si l'écran est supérieur à 992px
+if (window.innerWidth > 992) {
+  // Sélection du curseur et de la section
+  const cursor = document.querySelector('.custom-cursor');
+  const section = document.querySelector('.section_pm-chiffres');
 
-// initial styles for cursor
-gsap.set(cursor, { scale: 0, opacity: 0 });
+  // Définit les styles initiaux pour le curseur
+  gsap.set(cursor, { scale: 0, opacity: 0 });
 
-// update cursor position
-function updateCursor(e) {
-  gsap.to(cursor, {
-    duration: 0.4, // latency effect
-    x: e.clientX,
-    y: e.clientY,
-    ease: "power3.out"
+  // Fonction pour mettre à jour la position du curseur avec latence
+  function updateCursor(e) {
+    gsap.to(cursor, {
+      duration: 0.4, // Ajuste l'effet de délai
+      x: e.clientX,
+      y: e.clientY,
+      ease: "cubic-bezier(0.64, 0, 0.25, 1)"
+    });
+  }
+
+  // Affiche le curseur avec une animation de scale et d'opacité au survol de la section
+  section.addEventListener('mouseenter', () => {
+    gsap.to(cursor, {
+      scale: 1,
+      opacity: 1,
+      duration: 0.360,
+      ease: "cubic-bezier(0.64, 0, 0.25, 1)"
+    });
+    document.addEventListener('mousemove', updateCursor);
+  });
+
+  // Cache le curseur avec une animation de scale et d'opacité à la sortie de la section
+  section.addEventListener('mouseleave', () => {
+    gsap.to(cursor, {
+      scale: 0,
+      opacity: 0,
+      duration: 0.360,
+      ease: "cubic-bezier(0.64, 0, 0.25, 1)"
+    });
+    document.removeEventListener('mousemove', updateCursor);
   });
 }
-
-// Show cursor with scale and opacity animation on section hover
-section.addEventListener('mouseenter', () => {
-  gsap.to(cursor, {
-    scale: 1,
-    opacity: 1,
-    duration: 0.3,
-    ease: "power3.out"
-  });
-  document.addEventListener('mousemove', updateCursor);
-});
-
-// Hide cursor with scale and opacity animation on section leave
-section.addEventListener('mouseleave', () => {
-  gsap.to(cursor, {
-    scale: 0,
-    opacity: 0,
-    duration: 0.3,
-    ease: "power3.out"
-  });
-  document.removeEventListener('mousemove', updateCursor);
-});
 
 //Animation chiffres DONE
 // ScrollTrigger plugin with GSAP
@@ -77,8 +107,8 @@ gsap.to(animatedTextDataPm, {
   ease: 'none', // No easing for a linear scroll effect
   scrollTrigger: {
     trigger: '.pm-chiffres_wrapper', // Section that triggers the scroll animation
-    start: 'bottom bottom', // Start when the top of the section reaches 75% viewport height
-    end: 'top 25%', // End when the bottom of the section reaches 25% viewport height
+    start: 'top bottom', // Start when the top of the section reaches 75% viewport height
+    end: 'bottom top', // End when the bottom of the section reaches 25% viewport height
     scrub: true, // Sync the animation to the scroll position
     markers: false, // Optional: add markers for debugging
   }
@@ -101,8 +131,8 @@ gsap.to(animatedTextSolution, {
   ease: 'none', // No easing for a linear scroll effect
   scrollTrigger: {
     trigger: '.section_pm-solution-cta', // Section that triggers the scroll animation
-    start: 'top 75%', // Start when the top of the section reaches 75% viewport height
-    end: '75% 75%', // End when the bottom of the section reaches 25% viewport height
+    start: 'top bottom', // Start when the top of the section reaches 75% viewport height
+    end: 'bottom top', // End when the bottom of the section reaches 25% viewport height
     scrub: true, // Sync the animation to the scroll position
     markers: false // Optional: add markers for debugging
   }
@@ -142,8 +172,8 @@ gsap.to(animatedTextData, {
   ease: 'none', // No easing for a linear scroll effect
   scrollTrigger: {
     trigger: '.animated-bg-text_wrapper-data', // Section that triggers the scroll animation
-    start: 'bottom bottom',
-    end: 'top top',
+    start: 'top bottom',
+    end: 'bottom top',
     scrub: true,
     markers: false,
   }
