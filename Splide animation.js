@@ -10,7 +10,7 @@ new Splide('.splide.splide_problem', {
   drag: false,
   breakpoints: {
     479: {
-      gap: '0.25rem',
+      gap: '0.5rem',
       perPage: 1.5,
       focus: 'center',
       drag: true,
@@ -29,6 +29,116 @@ new Splide('.splide.splide_problem', {
       focus: 'center',
       drag: true,
       trimSpace: false, // Prevents cutting off the last slide
+    }
+  },
+}).mount();
+
+//Splide is-tab WIP (pagination à ajouter)
+new Splide('.splide.is-tab-1', {
+  type: 'slide',
+  perPage: 3,
+  gap: '1rem',
+  drag: false,
+  focus: 'center',
+  arrows: false,
+  pagination: false,
+  breakpoints: {
+    479: {
+      gap: '1rem',
+      perPage: 1.25,
+      pagination: false,
+      focus: 0,
+      drag: true,
+      trimSpace: false, // Prevents cutting off the last slide
+
+    },
+    767: {
+      gap: '1rem',
+      perPage: 1.75,
+      pagination: false,
+      focus: 0,
+      drag: true,
+      trimSpace: false,
+    },
+    991: {
+      gap: '0rem',
+      perPage: 2.25,
+      pagination: false,
+      focus: 'left',
+      drag: true,
+      trimSpace: false,
+    }
+  },
+}).mount();
+
+new Splide('.splide.is-tab-2', {
+  type: 'slide',
+  perPage: 3,
+  gap: '1rem',
+  drag: false,
+  focus: 'center',
+  arrows: false,
+  pagination: false,
+  breakpoints: {
+    479: {
+      gap: '1rem',
+      perPage: 1.25,
+      pagination: false,
+      focus: 0,
+      drag: true,
+      trimSpace: false,
+    },
+    767: {
+      gap: '1rem',
+      perPage: 1.75,
+      pagination: false,
+      focus: 0,
+      drag: true,
+      trimSpace: false,
+    },
+    991: {
+      gap: '0rem',
+      perPage: 2.25,
+      pagination: false,
+      focus: 'left',
+      drag: true,
+      trimSpace: false,
+    }
+  },
+}).mount();
+
+new Splide('.splide.is-tab-3', {
+  type: 'slide',
+  perPage: 3,
+  gap: '1rem',
+  drag: false,
+  focus: 'center',
+  arrows: false,
+  pagination: false,
+  breakpoints: {
+    479: {
+      gap: '1rem',
+      perPage: 1.25,
+      pagination: false,
+      focus: 0,
+      drag: true,
+      trimSpace: false,
+    },
+    767: {
+      gap: '1rem',
+      perPage: 1.75,
+      pagination: false,
+      focus: 0,
+      drag: true,
+      trimSpace: false,
+    },
+    991: {
+      gap: '0rem',
+      perPage: 2.25,
+      pagination: false,
+      focus: 'left',
+      drag: true,
+      trimSpace: false,
     }
   },
 }).mount();
