@@ -158,111 +158,54 @@ if (window.matchMedia("(min-width: 992px)").matches) {
   });
 }
 
-//Card animations
-// Register ScrollTrigger with GSAP
-gsap.registerPlugin(ScrollTrigger);
+// Sélectionner les cartes et l'élément donnees-cards_left-content
+const cards = document.querySelectorAll('.donnees-cards_card-item');
+const leftContent = document.querySelector('.donnees-cards_left-content');
+const nbCards = cards.length; // Nombre total de cartes
 
-ScrollTrigger.matchMedia({
-  // Pour les écrans en dessous de 767px
-  "(max-width: 767px)": function () {
-    // Définir les animations ou configurations spécifiques pour les petits écrans
-    const cards = gsap.utils.toArray(".donnees-cards_card-item").slice(1);
-    const firstCard = document.querySelector(".donnees-cards_card-item");
+// Fonction pour appliquer les styles dynamiques
+function applyStickyStyles(baseTop, incrementTop, incrementMargin) {
+  cards.forEach((card, index) => {
+    const topValue = baseTop + index * incrementTop; // Calcul de `top`
+    const marginValue = incrementMargin * (nbCards - index - 1); // Calcul de `margin-bottom`
 
-    const initialOffset = 300; // Espacement initial pour les cartes empilées en mobile
-    const targetSpacing = 6; // Espacement final pour chaque carte empilée en mobile
-
-    // Position statique pour la première carte
-    gsap.set(firstCard, {
-      position: "relative",
-      top: "0",
+    // Applique les styles dynamiques aux cartes
+    gsap.set(card, {
+      position: 'sticky', // Assure que chaque carte est sticky
+      top: `${topValue}rem`, // Décalage sticky croissant
+      marginBottom: `${marginValue}rem`, // Espacement décroissant
     });
 
-    // Position initiale et animation des cartes suivantes en mobile
-    cards.forEach((card, index) => {
-      gsap.set(card, {
-        position: "absolute",
-        left: "0%",
-        right: "0%",
-        top: `${initialOffset * (index + 1)}%`,
-        bottom: "auto"
-      });
+    // Applique le margin-bottom de la première carte à donnees-cards_left-content
+    if (index === 0) {
+      gsap.set(leftContent, { marginBottom: `${marginValue}rem` });
+    }
+  });
+}
 
-      gsap.to(card, {
-        top: `${targetSpacing * (index + 1)}rem`,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".section_donnees-cards",
-          start: `top+=${index * 300} top`, // Décalage ajusté en mobile
-          end: `+=600`, // Durée ajustée
-          scrub: true,
-          markers: false
-        }
-      });
-    });
-
-    // Pin de la section ajusté pour mobile
-    ScrollTrigger.create({
-      trigger: ".donnees_pin-mobile",
-      start: "top top",
-      end: `+=${100 + (50 * cards.length)}%`, // Durée ajustée pour le pinning
-      pin: true,
-      pinSpacing: true
-    });
-  },
-
-  // Pour les écrans au-dessus de 767px (desktop)
-  "(min-width: 768px)": function () {
-    const cards = gsap.utils.toArray(".donnees-cards_card-item").slice(1);
-    const firstCard = document.querySelector(".donnees-cards_card-item");
-
-    const initialOffset = 150; // Espacement initial pour les cartes empilées
-    const targetSpacing = 6; // Espacement final pour chaque carte empilée
-
-    // Position statique pour la première carte
-    gsap.set(firstCard, {
-      position: "relative",
-      top: "0%",
-    });
-
-    cards.forEach((card, index) => {
-      gsap.set(card, {
-        position: "absolute",
-        left: "0%",
-        right: "0%",
-        top: `${initialOffset * (index + 1)}%`,
-        bottom: "auto"
-      });
-
-      gsap.to(card, {
-        top: `${targetSpacing * (index + 1)}rem`,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".section_donnees-cards",
-          start: `top+=${index * 500} top`,
-          end: `+=900`,
-          scrub: true,
-          markers: false
-        }
-      });
-    });
-
-    ScrollTrigger.create({
-      trigger: ".section_donnees-cards",
-      start: "top top",
-      end: `+=${100 + (50 * cards.length)}%`,
-      pin: true,
-      pinSpacing: true
-    });
+// Appliquer les styles dynamiquement selon la taille d'écran
+function updateStyles() {
+  if (window.matchMedia('(max-width: 767px)').matches) {
+    // Pour les écrans ≤ 767px
+    applyStickyStyles(5, 3, 3);
+  } else {
+    // Pour les écrans > 767px
+    applyStickyStyles(8, 5, 5);
   }
-});
+}
+
+// Exécute la fonction au chargement
+updateStyles();
+
+// Réécoute les changements de taille d'écran
+window.addEventListener('resize', updateStyles);
 
 //hover product cards
 // Register GSAP
 gsap.registerPlugin(ScrollTrigger);
 
 // Configuration de l'animation pour le hover sur les éléments avec la classe .donnees-product_card-item
-document.querySelectorAll('.donnees-product_card-item').forEach(card => {
+document.querySelectorAll('.product_card-item').forEach(card => {
 
   // Gestionnaire d'événement pour le hover in
   card.addEventListener('mouseenter', () => {
@@ -275,7 +218,7 @@ document.querySelectorAll('.donnees-product_card-item').forEach(card => {
     });
 
     // Animation sur .donnees-product_image-wrapper pour la translation en x et y
-    gsap.to(card.querySelector('.donnees-product_image-wrapper'), {
+    gsap.to(card.querySelector('.product_image-wrapper'), {
       x: -10,
       y: -20,
       duration: 0.7,
@@ -294,7 +237,7 @@ document.querySelectorAll('.donnees-product_card-item').forEach(card => {
     });
 
     // Réinitialisation de .donnees-product_image-wrapper
-    gsap.to(card.querySelector('.donnees-product_image-wrapper'), {
+    gsap.to(card.querySelector('.product_image-wrapper'), {
       x: 0,
       y: 0,
       duration: 0.7,
