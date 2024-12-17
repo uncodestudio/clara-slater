@@ -1,4 +1,4 @@
-// GSAP Slider for testimonies (not used)
+// GSAP Slider for testimonies (This code is not used on the website)
 function slideTo(newIndex, direction) {
   const slides = document.querySelectorAll('.testimonies-slide');
   const currentSlide = document.querySelector('.testimonies-slide.current');
