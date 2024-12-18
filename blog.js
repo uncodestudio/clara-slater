@@ -1,3 +1,5 @@
+// Js for the blog
+
 // Wait for Finsweet CMS Library to initialize
 window.fsAttributes = window.fsAttributes || [];
 window.fsAttributes.push([
