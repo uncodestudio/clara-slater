@@ -1,3 +1,5 @@
+// Pages : email and blitzdays
+
 //Animation Card
 
 // Sélectionner les cartes et l'élément donnees-cards_left-content
