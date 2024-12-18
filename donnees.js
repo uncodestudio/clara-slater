@@ -1,4 +1,4 @@
-//GSAP Nos donnees
+//Page nos données
 
 //Texte animé DONE
 let typeSplit = new SplitType('[animate]', {
