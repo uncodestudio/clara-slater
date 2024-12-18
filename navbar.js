@@ -1,3 +1,5 @@
+// Menu Animation - apparition and link hover
+
 document.querySelectorAll('.navbar_link').forEach(link => {
   const menuSelect = link.querySelector('.menu_select');
 
