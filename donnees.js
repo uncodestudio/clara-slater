@@ -254,3 +254,49 @@ document.querySelectorAll('.product_card-item').forEach(card => {
     });
   });
 });
+
+// Calculer la longueur totale du path
+const circlePath = document.querySelector('.circle-path');
+const pathLength = circlePath.getTotalLength();
+
+// Initialiser le path
+gsap.set(circlePath, {
+  strokeDasharray: pathLength,
+  strokeDashoffset: pathLength
+});
+
+// Animation du cercle et du texte
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.section_donnees-infos',
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: true,
+    markers: false
+  }
+});
+
+// Animation du cercle qui se remplit
+tl.to(circlePath, {
+  strokeDashoffset: pathLength * 0.25, // 75% rempli (1 - 0.75)
+  duration: 1,
+  ease: 'none'
+});
+
+// Animation du compteur
+const textCounter = {
+  value: 1
+};
+
+tl.fromTo(textCounter, {
+  value: 1
+}, {
+  value: 75,
+  duration: 1,
+  ease: 'none',
+  onUpdate: function() {
+    const value = Math.round(textCounter.value);
+    document.querySelector('.donnes-info_text-anim').innerHTML = 
+      value.toString().padStart(2, '0') + '<span class="donnees-infos_text-anim-smaller">%</span>';
+  }
+}, 0);
