@@ -271,4 +271,3 @@ gsap.to(".circle-fill", {
     }
   }
 });
-
