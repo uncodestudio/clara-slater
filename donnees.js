@@ -269,7 +269,6 @@ gsap.to(".circle-fill", {
       const formattedValue = value.toString().padStart(2, '0');
       document.querySelector('.odometer').innerHTML = formattedValue;
     }
-
   }
 });
 
