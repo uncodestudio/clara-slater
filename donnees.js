@@ -24,6 +24,7 @@ gsap.from('[animate] .word', {
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
+/*
 // Color mapping for each content section ID
 const colorMapping = {
   'donnees-infos_orange': '#ffa047',
@@ -31,6 +32,7 @@ const colorMapping = {
   'donnees-infos_purple': '#f1eefd',
   'donnees-infos_red': '#fef1f6',
 };
+*/
 
 // Check if the viewport width is greater than 991px
 if (window.matchMedia("(min-width: 992px)").matches) {
@@ -113,6 +115,7 @@ if (window.matchMedia("(min-width: 992px)").matches) {
     });
   });
 
+  /*
   // Smooth Background color change on scroll for .home-features-background
   gsap.utils.toArray('.donnees-infos_content').forEach((content) => {
     const id = content.getAttribute('id'); // Get the ID of each content section
@@ -156,6 +159,7 @@ if (window.matchMedia("(min-width: 992px)").matches) {
       }
     });
   });
+  */
 }
 
 // Sélectionner les cartes et l'élément donnees-cards_left-content
