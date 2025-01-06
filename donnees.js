@@ -48,6 +48,7 @@ if (window.matchMedia("(min-width: 992px)").matches) {
     }
   });
 
+  /*
   gsap.to('.donnees-infos_image_wrapper', {
     opacity: 0.3,
     scrollTrigger: {
@@ -57,6 +58,7 @@ if (window.matchMedia("(min-width: 992px)").matches) {
       markers: false,
     }
   });
+  */
 
   // Sticky section animations for opacity transitions
   gsap.set('.donnees-infos_content', { opacity: 0.3 });
@@ -87,6 +89,7 @@ if (window.matchMedia("(min-width: 992px)").matches) {
     });
   });
 
+  /*
   gsap.utils.toArray('.donnees-infos_image_wrapper').forEach((imageWrapper) => {
     gsap.set(imageWrapper, { opacity: 0.3 });
 
@@ -114,8 +117,9 @@ if (window.matchMedia("(min-width: 992px)").matches) {
       }
     });
   });
+  */
 
-  
+
   /*
   // Smooth Background color change on scroll for .home-features-background
   gsap.utils.toArray('.donnees-infos_content').forEach((content) => {
