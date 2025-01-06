@@ -115,6 +115,7 @@ if (window.matchMedia("(min-width: 992px)").matches) {
     });
   });
 
+  
   /*
   // Smooth Background color change on scroll for .home-features-background
   gsap.utils.toArray('.donnees-infos_content').forEach((content) => {
