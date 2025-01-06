@@ -1,4 +1,4 @@
-//Page nos données
+//Page nos données new
 
 //Texte animé DONE
 let typeSplit = new SplitType('[animate]', {
