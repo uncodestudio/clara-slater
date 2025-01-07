@@ -174,7 +174,7 @@ const nbCards = cards.length; // Nombre total de cartes
 
 // Trouver la hauteur maximale parmi toutes les cartes
 let maxHeight = 0;
-cards.forEach(card => {
+cards.forEach((card, index) => {
   const cardHeight = card.offsetHeight;
   if (cardHeight > maxHeight) {
     maxHeight = cardHeight;
@@ -205,6 +205,7 @@ function applyStickyStyles(baseTop, incrementTop, incrementMargin) {
     }
   });
 }
+
 
 // Appliquer les styles dynamiquement selon la taille d'écran
 function updateStyles() {
