@@ -255,19 +255,19 @@ document.querySelectorAll('.product_card-item').forEach(card => {
   });
 });
 
-// Animation du cercle (inchangée)
+// Animation du cercle et du compteur
 gsap.to(".circle-fill", {
   backgroundImage: "conic-gradient(from 0deg, #D81159 0%, #D81159 75%, rgba(216, 17, 89, 0.08) 75%, rgba(216, 17, 89, 0.08) 100%)",
   scrollTrigger: {
     trigger: '.section_donnees-infos',
     start: 'top center',
-    end: '90% center',
+    end: '75% center',
     scrub: 0.1,
-    onUpdate: (self) => {
+    onUpdate: function(self) {
       const progress = self.progress;
-      const value = Math.round(progress * 74 + 1);
-      const formattedValue = value.toString().padStart(2, '0');
-      document.querySelector('.odometer').innerHTML = formattedValue;
+      const value = Math.round(progress * 75);
+      // Met à jour le texte avec le zéro devant
+      document.querySelector('.donnes-infos_text-anim').innerText = value.toString().padStart(2, '0');
     }
   }
 });
