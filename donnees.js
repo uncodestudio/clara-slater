@@ -172,6 +172,20 @@ const cards = document.querySelectorAll('.donnees-cards_card-item');
 const leftContent = document.querySelector('.donnees-cards_left-content');
 const nbCards = cards.length; // Nombre total de cartes
 
+// Trouver la hauteur maximale parmi toutes les cartes
+let maxHeight = 0;
+cards.forEach(card => {
+  const cardHeight = card.offsetHeight;
+  if (cardHeight > maxHeight) {
+    maxHeight = cardHeight;
+  }
+});
+
+// Appliquer la hauteur maximale comme min-height à toutes les cartes
+cards.forEach(card => {
+  card.style.minHeight = `${maxHeight}px`;
+});
+
 // Fonction pour appliquer les styles dynamiques
 function applyStickyStyles(baseTop, incrementTop, incrementMargin) {
   cards.forEach((card, index) => {
