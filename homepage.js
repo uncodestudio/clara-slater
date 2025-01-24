@@ -555,7 +555,7 @@ function setDefaultTabVisibility() {
 function filterTabs(filter) {
   tabContents.forEach(content => {
     const slides = content.querySelectorAll(
-      '.splide__slide'); // Select slides within each tab-content
+      '.card'); // Select slides within each tab-content
 
     if (content.getAttribute('tab-filter') === filter) {
       content.style.display = "block"; // Ensure parent tab-content is visible
