@@ -1,4 +1,6 @@
 //Texte animé DONE
+gsap.registerPlugin(ScrollTrigger);
+
 let typeSplit = new SplitType('[animate]', {
   types: 'lines, words, chars',
   tagName: 'span'
