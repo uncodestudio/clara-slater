@@ -110,7 +110,7 @@ window.fsAttributes.push([
     }
 
     // Initial run to apply classes, insert CTA, and initialize button animations on page load
-    applyLargeClass();
+    // applyLargeClass();
     insertCTA();
     initializeButtonAnimations();
 
