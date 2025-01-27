@@ -115,9 +115,11 @@ window.fsAttributes.push([
     initializeButtonAnimations();
 
     // Re-apply layout on window resize
+    /*
     window.addEventListener('resize', () => {
       applyLargeClass();
     });
+    */
 
     const collectionList = document.querySelector('.articles_collection-list');
     if (collectionList) {
@@ -125,7 +127,7 @@ window.fsAttributes.push([
         obs.disconnect(); // Temporarily stop observing to avoid infinite loops
 
         setTimeout(() => {
-          applyLargeClass();
+          // applyLargeClass();
           insertCTA();
           initializeButtonAnimations();
           console.log("Detected DOM changes and reapplied styles and animations.");
