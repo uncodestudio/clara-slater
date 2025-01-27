@@ -12,6 +12,7 @@ window.fsAttributes.push([
       return window.innerWidth <= 991;
     }
 
+    /*
     // Function to apply the "large" class to the first and seventh items if not mobile
     function applyLargeClass() {
       const items = document.querySelectorAll('.articles_collection-item');
@@ -49,6 +50,7 @@ window.fsAttributes.push([
         });
       }
     }
+    */
 
     // Function to insert CTA after the 5th item or at the end if fewer than 5 items
     function insertCTA() {
