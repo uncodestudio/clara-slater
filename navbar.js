@@ -131,3 +131,27 @@ menuButton.addEventListener('click', () => {
       .to(navbarBg, { backgroundColor: 'transparent' }, 0); // Réinitialise la couleur de fond
   }
 });
+
+// Ajout de l'événement de clic sur navbar_bg pour fermer le menu
+navbarBg.addEventListener('click', (event) => {
+  // Vérifie si le clic est sur navbar_bg ou menu_container
+  const clickedElement = event.target;
+  const isClickOnBgOrContainer = clickedElement.classList.contains('navbar_bg') || 
+                                clickedElement.classList.contains('menu_container');
+
+  if (isClickOnBgOrContainer && isMenuOpen) {
+    gsap.timeline({
+      defaults: { duration: 0.9, ease: 'cubic-bezier(.64, 0, .25, 1)' },
+      onComplete: () => {
+        isMenuOpen = false;
+        gsap.set(navbarBg, { display: 'none' });
+        gsap.set(navbarShadow, { display: 'flex' });
+      },
+    })
+    .to(menuLineTop, { y: 0, rotationZ: 0 }, 0)
+    .to(menuLineBottom, { y: 0, rotationZ: 0 }, 0)
+    .to(menuRight, { backgroundColor: 'white', borderColor: 'rgba(24, 2, 10, 0.05)' }, 0)
+    .to(menuLayout, { width: 0, height: 0 }, 0)
+    .to(navbarBg, { backgroundColor: 'transparent' }, 0);
+  }
+});
