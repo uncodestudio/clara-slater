@@ -12,6 +12,7 @@ window.fsAttributes.push([
       return window.innerWidth <= 991;
     }
 
+    /*
     // Function to apply the "large" class to the first and seventh items if not mobile
     function applyLargeClass() {
       const items = document.querySelectorAll('.articles_collection-item');
@@ -49,6 +50,7 @@ window.fsAttributes.push([
         });
       }
     }
+    */
 
     // Function to insert CTA after the 5th item or at the end if fewer than 5 items
     function insertCTA() {
@@ -108,14 +110,16 @@ window.fsAttributes.push([
     }
 
     // Initial run to apply classes, insert CTA, and initialize button animations on page load
-    applyLargeClass();
+    // applyLargeClass();
     insertCTA();
     initializeButtonAnimations();
 
     // Re-apply layout on window resize
+    /*
     window.addEventListener('resize', () => {
       applyLargeClass();
     });
+    */
 
     const collectionList = document.querySelector('.articles_collection-list');
     if (collectionList) {
@@ -123,7 +127,7 @@ window.fsAttributes.push([
         obs.disconnect(); // Temporarily stop observing to avoid infinite loops
 
         setTimeout(() => {
-          applyLargeClass();
+          // applyLargeClass();
           insertCTA();
           initializeButtonAnimations();
           console.log("Detected DOM changes and reapplied styles and animations.");
