@@ -273,7 +273,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Vérifie si l'écran est supérieur à 992px
 if (window.innerWidth > 992) {
   // Sélection du curseur et de la section
-  // const cursor = document.querySelector('.custom-cursor');
+  const cursor = document.querySelector('.custom-cursor');
   const section = document.querySelector('.section_home-chiffres');
 
   // Définit les styles initiaux pour le curseur
@@ -290,6 +290,7 @@ if (window.innerWidth > 992) {
   }
 
   // Affiche le curseur avec une animation de scale et d'opacité au survol de la section
+  /*
   section.addEventListener('mouseenter', () => {
     gsap.to(cursor, {
       scale: 1,
@@ -299,6 +300,7 @@ if (window.innerWidth > 992) {
     });
     document.addEventListener('mousemove', updateCursor);
   });
+  */
 
   // Cache le curseur avec une animation de scale et d'opacité à la sortie de la section
   section.addEventListener('mouseleave', () => {
