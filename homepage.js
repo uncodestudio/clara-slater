@@ -273,7 +273,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Vérifie si l'écran est supérieur à 992px
 if (window.innerWidth > 992) {
   // Sélection du curseur et de la section
-  const cursor = document.querySelector('.custom-cursor');
+  // const cursor = document.querySelector('.custom-cursor');
   const section = document.querySelector('.section_home-chiffres');
 
   // Définit les styles initiaux pour le curseur
