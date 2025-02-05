@@ -58,7 +58,7 @@ if (window.innerWidth > 992) {
 
   // Définit les styles initiaux pour le curseur
   gsap.set(cursor, { scale: 0, opacity: 0 });
-
+  
   // Fonction pour mettre à jour la position du curseur avec latence
   function updateCursor(e) {
     gsap.to(cursor, {
@@ -69,6 +69,7 @@ if (window.innerWidth > 992) {
     });
   }
 
+  /*
   // Affiche le curseur avec une animation de scale et d'opacité au survol de la section
   section.addEventListener('mouseenter', () => {
     gsap.to(cursor, {
@@ -79,6 +80,7 @@ if (window.innerWidth > 992) {
     });
     document.addEventListener('mousemove', updateCursor);
   });
+  */
 
   // Cache le curseur avec une animation de scale et d'opacité à la sortie de la section
   section.addEventListener('mouseleave', () => {
